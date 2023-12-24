@@ -8,6 +8,8 @@
 
 /* Begin PBXFileReference section */
 		8C5302B12B38CF15001B7802 /* libpccel2.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libpccel2.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C5302B82B38CF1F001B7802 /* pccel2_exports.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pccel2_exports.h; sourceTree = "<group>"; };
+		8C5302B92B38CFC3001B7802 /* types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -24,6 +26,8 @@
 		8C5302A82B38CF15001B7802 = {
 			isa = PBXGroup;
 			children = (
+				8C5302B92B38CFC3001B7802 /* types.h */,
+				8C5302B82B38CF1F001B7802 /* pccel2_exports.h */,
 				8C5302B22B38CF15001B7802 /* Products */,
 			);
 			sourceTree = "<group>";

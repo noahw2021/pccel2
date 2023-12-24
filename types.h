@@ -6,7 +6,11 @@
 //
 
 #ifndef types_h
-#define types_h
+#define types_ht
 
+typedef unsigned long long WORD64;
+typedef unsigned long WORD32;
+typedef unsigned short WORD16;
+typedef unsigned char BYTE;
 
 #endif /* types_h */
