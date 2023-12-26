@@ -6,10 +6,17 @@
 	objectVersion = 56;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		8C5302BF2B3B4607001B7802 /* emu_main.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C5302BE2B3B4607001B7802 /* emu_main.c */; };
+		8C5302C12B3B4637001B7802 /* emu_instrinsics.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C5302C02B3B4637001B7802 /* emu_instrinsics.c */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		8C5302B12B38CF15001B7802 /* libpccel2.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libpccel2.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C5302B82B38CF1F001B7802 /* pccel2_exports.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pccel2_exports.h; sourceTree = "<group>"; };
 		8C5302B92B38CFC3001B7802 /* types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
+		8C5302BE2B3B4607001B7802 /* emu_main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = emu_main.c; sourceTree = "<group>"; };
+		8C5302C02B3B4637001B7802 /* emu_instrinsics.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = emu_instrinsics.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +33,7 @@
 		8C5302A82B38CF15001B7802 = {
 			isa = PBXGroup;
 			children = (
+				8C5302BD2B3B45F5001B7802 /* pccel2 */,
 				8C5302B92B38CFC3001B7802 /* types.h */,
 				8C5302B82B38CF1F001B7802 /* pccel2_exports.h */,
 				8C5302B22B38CF15001B7802 /* Products */,
@@ -38,6 +46,15 @@
 				8C5302B12B38CF15001B7802 /* libpccel2.dylib */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		8C5302BD2B3B45F5001B7802 /* pccel2 */ = {
+			isa = PBXGroup;
+			children = (
+				8C5302BE2B3B4607001B7802 /* emu_main.c */,
+				8C5302C02B3B4637001B7802 /* emu_instrinsics.c */,
+			);
+			path = pccel2;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -107,6 +124,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C5302BF2B3B4607001B7802 /* emu_main.c in Sources */,
+				8C5302C12B3B4637001B7802 /* emu_instrinsics.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -5,4 +5,8 @@
 //  Created by Noah Wooten on 12/26/23.
 //
 
-#include <stdio.h>
+#include "../pccel2_exports.h"
+
+PEMULATOR_CTX EmuCtx;
+PCPU_CTX CpuCtx;
+

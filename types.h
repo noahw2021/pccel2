@@ -6,11 +6,13 @@
 //
 
 #ifndef types_h
-#define types_ht
+#define types_h
 
 typedef unsigned long long WORD64;
 typedef unsigned long WORD32;
 typedef unsigned short WORD16;
 typedef unsigned char BYTE;
+
+#define InRange(x, min, max) (x > min && x < max)
 
 #endif /* types_h */

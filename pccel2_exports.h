@@ -8,8 +8,15 @@
 #ifndef pccel2_exports_h
 #define pccel2_exports_h
 
-void Pccel2Init(void);
-void Pccel2Shutdown(void);
+#include "types.h"
+
+#define CCEL2_API
+
+CCEL2_API void Pccel2Init(void);
+CCEL2_API void Pccel2Shutdown(void);
+
+typedef struct _CPU_CTX *PCPU_CTX;
+typedef struct _MMU_PAGE *PMMU_PAGE;
 
 typedef struct _EMULATOR_CTX {
     WORD64 TimerNs;
@@ -20,7 +27,26 @@ typedef struct _EMULATOR_CTX {
     WORD64 SystemRamSize;
     
     void* VideoData;
+    PCPU_CTX Cpus;
+    PMMU_PAGE Pages;
 }EMULATOR_CTX, *PEMULATOR_CTX;
+
+typedef struct _MMU_PAGE {
+    WORD64 Physical;
+    WORD64 Virtual;
+    WORD64 Size;
+    union {
+        WORD64 Raw;
+        struct {
+            WORD64 Secure : 1;
+            WORD64 Selector : 1;
+            WORD64 Read : 1;
+            WORD64 Active : 1;
+            
+            WORD64 Reserved : 60;
+        };
+    }Permissions;
+}MMU_PAGE, *PMMU_PAGE;
 
 typedef struct _CPU_CTX {
     union {
@@ -86,5 +112,43 @@ typedef struct _CPU_CTX {
 
 extern PEMULATOR_CTX EmuCtx;
 extern PCPU_CTX CpuCtx;
+
+// General
+CCEL2_API void __shf(void);
+
+// Virtual Memory
+CCEL2_API void __vme(void);
+CCEL2_API void __vmd(void);
+CCEL2_API WORD64 __vpc(WORD64 Phys, WORD64 Size, WORD64 Permissions);
+CCEL2_API void __vpd(WORD64 Virt);
+CCEL2_API void __vsi(void);
+CCEL2_API void __vsd(void);
+CCEL2_API void __vss(WORD64 New);
+CCEL2_API void __ves(WORD64 End);
+
+// Memory
+CCEL2_API void __psr(CPU_CTX Ctx);
+CCEL2_API CPU_CTX __por(void);
+
+// Devices
+CCEL2_API WORD64 __dsq(WORD64 Device);
+CCEL2_API void __dsc(WORD64 Device, WORD64 Command);
+CCEL2_API void __dsd(WORD64 Device, WORD64 Data);
+CCEL2_API WORD64 __dgd(WORD64 Device);
+CCEL2_API void __dpe(WORD64 Device);
+CCEL2_API void __dpd(WORD64 Device);
+CCEL2_API WORD64 __dgc(void);
+
+// Interrupts
+CCEL2_API void __int(WORD64 Interrupt);
+CCEL2_API void __hnd(WORD64 Interrupt, WORD64 VAddr);
+CCEL2_API void __irt(void);
+CCEL2_API void __eni(void);
+CCEL2_API void __dsi(void);
+CCEL2_API void __smh(WORD64 Handler);
+CCEL2_API void __sit(WORD64 Handler);
+
+CCEL2_API void MemoryRead(WORD64 Address, WORD64 Value);
+CCEL2_API void MemoryWrite(WORD64 Address, WORD64 Value);
 
 #endif /* pccel2_exports_h */
