@@ -110,6 +110,27 @@ typedef struct _CPU_CTX {
     };
 }CPU_CTX, *PCPU_CTX;
 
+typedef union _CPU_DEVICE_FLAGS {
+    WORD32 FlagsRaw;
+    struct {
+        WORD32 Active : 1;
+        WORD32 On : 1;
+        WORD32 Sleep : 1;
+        WORD32 Hotswappable : 1;
+    };
+}CPU_DEVICE_FLAGS, *PCPU_DEVICE_FLAGS;
+
+typedef struct _CPU_DEVICE {
+    int DeviceType;
+    char DeviceName[32];
+    char DeviceVendor[32];
+    WORD64 VendorId;
+    WORD64 DeviceModel;
+    WORD64 DeviceSerial;
+    WORD64(*Callbacks[7])(WORD32 DeviceId, WORD64 Argument);
+    CPU_DEVICE_FLAGS Flags;
+}CPU_DEVICE, *PCPU_DEVICE;
+
 extern PEMULATOR_CTX EmuCtx;
 extern PCPU_CTX CpuCtx;
 

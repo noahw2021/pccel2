@@ -56,33 +56,56 @@ void __vpd(WORD64 Virt) {
         if (ThisPage->Permissions.Active)
             continue;
         
-        if ()
+        if (InRange(Virt, ThisPage->Virtual, ThisPage->Virtual + ThisPage->Size)) {
+            ThisPage->Physical = 0x00;
+            ThisPage->Permissions.Active = 0;
+        }
+        
+        return;
     }
+    
+    return;
 }
 
 void __vsi(void) {
-    
+    CpuCtx->Security.SecurityLevel++;
+    return;
 }
 
 void __vsd(void) {
-    
+    if (!CpuCtx->Flags.AF)
+        CpuCtx->Security.SecurityLevel--;
+    return;
 }
 
 void __vss(WORD64 New) {
-    
+    CpuCtx->ControlRegisters.PageStart = New;
+    return;
 }
 
 void __ves(WORD64 End) {
-    
+    CpuCtx->ControlRegisters.PageEnd = End;
 }
 
 // Memory
 void __psr(CPU_CTX Ctx) {
+    for (int i = 0; i < 16; i++)
+        CpuCtx->GPRs[i] = Ctx.GPRs[i];
     
+    if (CpuCtx->Security.SecurityLevel <= 1) {
+        for (int i = 0;i < 16; i++)
+            CpuCtx->System[i] = Ctx.System[i];
+    }
+    return;
 }
 
 CPU_CTX __por(void) {
     CPU_CTX Return = {0};
+    for (int i = 0; i < 16; i++) {
+        Return.GPRs[i] = CpuCtx->GPRs[i];
+        Return.Registers[i] = CpuCtx->Registers[i];
+    }
+    
     return Return;
 }
 
@@ -92,7 +115,7 @@ WORD64 __dsq(WORD64 Device) {
 }
 
 void __dsc(WORD64 Device, WORD64 Command) {
-    
+     
 }
 
 void __dsd(WORD64 Device, WORD64 Data) {
