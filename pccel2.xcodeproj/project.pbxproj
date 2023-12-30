@@ -17,6 +17,10 @@
 		8C5302B92B38CFC3001B7802 /* types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
 		8C5302BE2B3B4607001B7802 /* emu_main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = emu_main.c; sourceTree = "<group>"; };
 		8C5302C02B3B4637001B7802 /* emu_instrinsics.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = emu_instrinsics.c; sourceTree = "<group>"; };
+		8C7D2D1E2B40B7BE00C12DD0 /* devices.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = devices.h; sourceTree = "<group>"; };
+		8C7D2D1F2B40B7C600C12DD0 /* video.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = video.c; sourceTree = "<group>"; };
+		8C7D2D202B40B7CD00C12DD0 /* keyboard.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = keyboard.c; sourceTree = "<group>"; };
+		8C7D2D212B40B7DA00C12DD0 /* fdisk.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = fdisk.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +37,7 @@
 		8C5302A82B38CF15001B7802 = {
 			isa = PBXGroup;
 			children = (
+				8C7D2D1D2B40B7AF00C12DD0 /* devices */,
 				8C5302BD2B3B45F5001B7802 /* pccel2 */,
 				8C5302B92B38CFC3001B7802 /* types.h */,
 				8C5302B82B38CF1F001B7802 /* pccel2_exports.h */,
@@ -55,6 +60,17 @@
 				8C5302C02B3B4637001B7802 /* emu_instrinsics.c */,
 			);
 			path = pccel2;
+			sourceTree = "<group>";
+		};
+		8C7D2D1D2B40B7AF00C12DD0 /* devices */ = {
+			isa = PBXGroup;
+			children = (
+				8C7D2D1E2B40B7BE00C12DD0 /* devices.h */,
+				8C7D2D1F2B40B7C600C12DD0 /* video.c */,
+				8C7D2D202B40B7CD00C12DD0 /* keyboard.c */,
+				8C7D2D212B40B7DA00C12DD0 /* fdisk.c */,
+			);
+			path = devices;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
