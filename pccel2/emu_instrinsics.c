@@ -94,7 +94,7 @@ void __psr(CPU_CTX Ctx) {
     
     if (CpuCtx->Security.SecurityLevel <= 1) {
         for (int i = 0;i < 16; i++)
-            CpuCtx->System[i] = Ctx.System[i];
+            CpuCtx->SystemRs[i] = Ctx.SystemRs[i];
     }
     return;
 }
@@ -103,7 +103,7 @@ CPU_CTX __por(void) {
     CPU_CTX Return = {0};
     for (int i = 0; i < 16; i++) {
         Return.GPRs[i] = CpuCtx->GPRs[i];
-        Return.Registers[i] = CpuCtx->Registers[i];
+        Return.SystemRs[i] = CpuCtx->SystemRs[i];
     }
     
     return Return;
@@ -111,7 +111,11 @@ CPU_CTX __por(void) {
 
 // Devices
 WORD64 __dsq(WORD64 Device) {
-    return 0x00;
+    PCPU_DEVICE Devices = (PCPU_DEVICE)EmuCtx->SystemRam +
+        CpuCtx->ControlRegisters.DeviceMap;
+    PCPU_DEVICE ThisDevice = &Devices[Device];
+    
+    return 
 }
 
 void __dsc(WORD64 Device, WORD64 Command) {
