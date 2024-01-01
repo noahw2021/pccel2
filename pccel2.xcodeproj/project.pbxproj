@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C15BBEF2B426FCC007D5FE3 /* video.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C7D2D1F2B40B7C600C12DD0 /* video.c */; };
+		8C15BBF02B426FCC007D5FE3 /* keyboard.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C7D2D202B40B7CD00C12DD0 /* keyboard.c */; };
+		8C15BBF12B426FCC007D5FE3 /* fdisk.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C7D2D212B40B7DA00C12DD0 /* fdisk.c */; };
 		8C5302BF2B3B4607001B7802 /* emu_main.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C5302BE2B3B4607001B7802 /* emu_main.c */; };
 		8C5302C12B3B4637001B7802 /* emu_instrinsics.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C5302C02B3B4637001B7802 /* emu_instrinsics.c */; };
+		8C7C33A92B42696F009EEB9F /* libSDL2-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CAE87F32B40BA2000A2E6C9 /* libSDL2-2.0.0.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -17,10 +21,12 @@
 		8C5302B92B38CFC3001B7802 /* types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
 		8C5302BE2B3B4607001B7802 /* emu_main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = emu_main.c; sourceTree = "<group>"; };
 		8C5302C02B3B4637001B7802 /* emu_instrinsics.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = emu_instrinsics.c; sourceTree = "<group>"; };
+		8C7C33A72B426956009EEB9F /* libSDL2_ttf-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2_ttf-2.0.0.dylib"; path = "../../../../../opt/homebrew/Cellar/sdl2_ttf/2.20.2/lib/libSDL2_ttf-2.0.0.dylib"; sourceTree = "<group>"; };
 		8C7D2D1E2B40B7BE00C12DD0 /* devices.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = devices.h; sourceTree = "<group>"; };
 		8C7D2D1F2B40B7C600C12DD0 /* video.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = video.c; sourceTree = "<group>"; };
 		8C7D2D202B40B7CD00C12DD0 /* keyboard.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = keyboard.c; sourceTree = "<group>"; };
 		8C7D2D212B40B7DA00C12DD0 /* fdisk.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = fdisk.c; sourceTree = "<group>"; };
+		8CAE87F32B40BA2000A2E6C9 /* libSDL2-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2-2.0.0.dylib"; path = "../../../../../opt/homebrew/Cellar/sdl2/2.28.5/lib/libSDL2-2.0.0.dylib"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,6 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C7C33A92B42696F009EEB9F /* libSDL2-2.0.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +49,7 @@
 				8C5302B92B38CFC3001B7802 /* types.h */,
 				8C5302B82B38CF1F001B7802 /* pccel2_exports.h */,
 				8C5302B22B38CF15001B7802 /* Products */,
+				8CAE87F22B40BA1F00A2E6C9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,6 +79,15 @@
 				8C7D2D212B40B7DA00C12DD0 /* fdisk.c */,
 			);
 			path = devices;
+			sourceTree = "<group>";
+		};
+		8CAE87F22B40BA1F00A2E6C9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8C7C33A72B426956009EEB9F /* libSDL2_ttf-2.0.0.dylib */,
+				8CAE87F32B40BA2000A2E6C9 /* libSDL2-2.0.0.dylib */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,6 +157,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C15BBEF2B426FCC007D5FE3 /* video.c in Sources */,
+				8C15BBF02B426FCC007D5FE3 /* keyboard.c in Sources */,
+				8C15BBF12B426FCC007D5FE3 /* fdisk.c in Sources */,
 				8C5302BF2B3B4607001B7802 /* emu_main.c in Sources */,
 				8C5302C12B3B4637001B7802 /* emu_instrinsics.c in Sources */,
 			);
@@ -270,8 +290,14 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/opt/homebrew/Cellar/sdl2/2.28.5/lib,
+					/opt/homebrew/Cellar/sdl2_ttf/2.20.2/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = /opt/homebrew/cellar/sdl2/2.28.5/include/SDL2;
 			};
 			name = Debug;
 		};
@@ -282,8 +308,14 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/opt/homebrew/Cellar/sdl2/2.28.5/lib,
+					/opt/homebrew/Cellar/sdl2_ttf/2.20.2/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = /opt/homebrew/cellar/sdl2/2.28.5/include/SDL2;
 			};
 			name = Release;
 		};

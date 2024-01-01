@@ -41,7 +41,7 @@ WORD32  FdiskGetDriveCount(void);
 void FdiskDriveSleep(WORD32 DriveId);
 void FdiskDriveAwake(WORD32 DriveId);
 WORD64 FdiskGetDriveSize(WORD32 DriveId);
-_bool FdiskIsDriveReady(WORD32 DriveId);
+BYTE FdiskIsDriveReady(WORD32 DriveId);
 WORD64 FdiskDriveRead(WORD32 DriveId);
 void FdiskDriveWrite(WORD32 DriveId, WORD64 Data);
 WORD64 FdiskGetDriveSerial(WORD32 DriveId);

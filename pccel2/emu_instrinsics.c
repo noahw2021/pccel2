@@ -111,11 +111,11 @@ CPU_CTX __por(void) {
 
 // Devices
 WORD64 __dsq(WORD64 Device) {
-    PCPU_DEVICE Devices = (PCPU_DEVICE)EmuCtx->SystemRam +
-        CpuCtx->ControlRegisters.DeviceMap;
-    PCPU_DEVICE ThisDevice = &Devices[Device];
+    // PCPU_DEVICE Devices = (PCPU_DEVICE)EmuCtx->SystemRam +
+    //    CpuCtx->ControlRegisters.DeviceMap;
+    // PCPU_DEVICE ThisDevice = &Devices[Device];
     
-    return 
+    return DEVSTATUS_GOOD;
 }
 
 void __dsc(WORD64 Device, WORD64 Command) {
