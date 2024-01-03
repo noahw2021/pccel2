@@ -15,18 +15,28 @@
 #include <string.h>
 
 typedef union _VIDEO_CTX_XARGS {
+    void* Buffer;
     char* Text;
     WORD32 Color;
 }VIDEO_CTX_XARGS, *PVIDEO_CTX_XARGS;
 
-#define VCTYPE_RECT 0x01
-#define VCTYPE_OUTL 0x02
-#define VCTYPE_TEXT 0x03
-#define VCTYPE_COPY 0x04
+#define VCTYPE_RECT 0x00
+#define VCTYPE_OUTL 0x01
+#define VCTYPE_COPY 0x02
+#define VCTYPE_LINE 0x03
+
+#define R(x) (Uint8)((WORD32)(x & 0xFF000000) >> 24)
+#define G(x) (Uint8)((WORD32)(x & 0x00FF0000) >> 16)
+#define B(x) (Uint8)((WORD32)(x & 0x0000FF00) >> 8)
+#define A(x) (Uint8)((WORD32)(x & 0x000000FF) >> 0)
+#define RMASK 0x000000FF
+#define GMASK 0x0000FF00
+#define BMASK 0x00FF0000
+#define AMASK 0xFF000000
 
 typedef struct _VIDEO_CTX_COMMAND {
     WORD32 VcType;
-    WORD32 x, y, w, h;
+    int x, y, w, h;
     VIDEO_CTX_XARGS XArgs;
 }VIDEO_CTX_COMMAND, *PVIDEO_CTX_COMMAND;
 
@@ -68,9 +78,48 @@ void VideoInit(void) {
             break;
         }
         
+        SDL_LockMutex(VdCtx->Signal_VideoReady);
         for (int i = 0; i < VdCtx->CommandCount; i++) {
+            PVIDEO_CTX_COMMAND ThisCmd = &VdCtx->Commands[i];
+            SDL_Surface* Surface;
             
+            switch (ThisCmd->VcType) {
+                case VCTYPE_RECT:
+                    SDL_SetRenderDrawColor(VdCtx->Renderer, R(ThisCmd->XArgs.Color),
+                        G(ThisCmd->XArgs.Color), B(ThisCmd->XArgs.Color), A(ThisCmd->XArgs.Color));
+                    SDL_Rect Rectangle = { ThisCmd->x, ThisCmd->y, ThisCmd->w, ThisCmd->h };
+                    SDL_RenderFillRect(VdCtx->Renderer, &Rectangle);
+                    break;
+                    
+                case VCTYPE_OUTL:
+                    SDL_SetRenderDrawColor(VdCtx->Renderer, R(ThisCmd->XArgs.Color),
+                        G(ThisCmd->XArgs.Color), B(ThisCmd->XArgs.Color), A(ThisCmd->XArgs.Color));
+                    SDL_Rect Rectangle2 = { ThisCmd->x, ThisCmd->y, ThisCmd->w, ThisCmd->h };
+                    SDL_RenderDrawRect(VdCtx->Renderer, &Rectangle2);
+                    break;
+                    
+                case VCTYPE_COPY:
+                    Surface = SDL_CreateRGBSurfaceFrom(
+                        ThisCmd->XArgs.Buffer, ThisCmd->w, ThisCmd->h, 32, 32, RMASK, GMASK,
+                        BMASK, AMASK);
+                    SDL_Texture* TargetTexture = SDL_CreateTextureFromSurface(VdCtx->Renderer,
+                        Surface);
+                    SDL_FreeSurface(Surface);
+                    SDL_Rect DestRect = { ThisCmd->x, ThisCmd->y, ThisCmd->w, ThisCmd->h };
+                    SDL_RenderCopy(VdCtx->Renderer, TargetTexture, NULL, &DestRect);
+                    SDL_DestroyTexture(TargetTexture);
+                    break;
+                    
+                case VCTYPE_LINE:
+                    SDL_SetRenderDrawColor(VdCtx->Renderer, R(ThisCmd->XArgs.Color),
+                        G(ThisCmd->XArgs.Color), B(ThisCmd->XArgs.Color), A(ThisCmd->XArgs.Color));
+                    SDL_RenderDrawLine(VdCtx->Renderer, ThisCmd->x,
+                        ThisCmd->y, ThisCmd->w, ThisCmd->h);
+                    break;
+            }
         }
+        SDL_UnlockMutex(VdCtx->Signal_VideoReady);
+        
     }
     
     return;
