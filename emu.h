@@ -8,5 +8,8 @@
 #ifndef emu_h
 #define emu_h
 
+#include "types.h"
+
+void EmuInterrupt(BYTE Interrupt, WORD64 Argument);
 
 #endif /* emu_h */

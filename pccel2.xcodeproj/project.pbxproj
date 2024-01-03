@@ -16,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8C15BC522B45FBAA007D5FE3 /* emu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = emu.h; sourceTree = "<group>"; };
 		8C5302B12B38CF15001B7802 /* libpccel2.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libpccel2.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C5302B82B38CF1F001B7802 /* pccel2_exports.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pccel2_exports.h; sourceTree = "<group>"; };
 		8C5302B92B38CFC3001B7802 /* types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
@@ -48,6 +49,7 @@
 				8C5302BD2B3B45F5001B7802 /* pccel2 */,
 				8C5302B92B38CFC3001B7802 /* types.h */,
 				8C5302B82B38CF1F001B7802 /* pccel2_exports.h */,
+				8C15BC522B45FBAA007D5FE3 /* emu.h */,
 				8C5302B22B38CF15001B7802 /* Products */,
 				8CAE87F22B40BA1F00A2E6C9 /* Frameworks */,
 			);
