@@ -20,6 +20,8 @@
 #define BMASK 0x00FF0000
 #define AMASK 0xFF000000
 
+#define HILOW64(h, l) ((h << 32) | l)
+
 PVIDEO_CTX VdCtx;
 
 void VideoInit(void) {
@@ -30,9 +32,13 @@ void VideoInit(void) {
     VdCtx->Signal_KeyModify = SDL_CreateMutex();
     VdCtx->Signal_VideoReady = SDL_CreateMutex();
     VdCtx->VcMutex = SDL_CreateMutex();
+    VdCtx->w = 640;
+    VdCtx->h = 480;
     
     VdCtx->Window = SDL_CreateWindow("PCCEL2/PLASM2 Layer",
-        SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, 0);
+        SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, (int)VdCtx->w,
+        (int)VdCtx->h, 0);
+    
     VdCtx->Renderer = SDL_CreateRenderer(VdCtx->Window, -1,
         SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     
@@ -112,6 +118,7 @@ void VideoInit(void) {
                     break;
             }
         }
+        VdCtx->CommandCount = 0;
         SDL_UnlockMutex(VdCtx->Signal_VideoReady);
         
     }
@@ -149,25 +156,96 @@ void VideoSetTextBuffer(WORD64 NewOffset) {
 }
 
 void VideoDrawLine(WORD16 x1, WORD16 y1, WORD16 x2, WORD16 y2, WORD32 color) {
+    SDL_LockMutex(VdCtx->Signal_VideoReady);
+    
+    if (VdCtx->CommandCount >= VdCtx->CommandsMax) {
+        VdCtx->CommandsMax += 100;
+        VdCtx->Commands = realloc(VdCtx->Commands,
+            sizeof(VIDEO_CTX_COMMAND) * VdCtx->CommandsMax);
+    }
+    
+    PVIDEO_CTX_COMMAND ThisCmd = &VdCtx->Commands[VdCtx->CommandCount++];
+    ThisCmd->x = x1;
+    ThisCmd->y = y1;
+    ThisCmd->w = x2;
+    ThisCmd->h = y2;
+    ThisCmd->XArgs.Color = color;
+    ThisCmd->VcType = VCTYPE_LINE;
+    
+    SDL_UnlockMutex(VdCtx->Signal_VideoReady);
     return;
 }
 
 void VideoDrawRect(WORD16 x, WORD16 y, WORD16 w, WORD16 h, WORD32 color) {
+    SDL_LockMutex(VdCtx->Signal_VideoReady);
+    
+    if (VdCtx->CommandCount >= VdCtx->CommandsMax) {
+        VdCtx->CommandsMax += 100;
+        VdCtx->Commands = realloc(VdCtx->Commands,
+            sizeof(VIDEO_CTX_COMMAND) * VdCtx->CommandsMax);
+    }
+    
+    PVIDEO_CTX_COMMAND ThisCmd = &VdCtx->Commands[VdCtx->CommandCount++];
+    ThisCmd->x = x;
+    ThisCmd->y = y;
+    ThisCmd->w = w;
+    ThisCmd->h = h;
+    ThisCmd->XArgs.Color = color;
+    ThisCmd->VcType = VCTYPE_OUTL;
+    
+    SDL_UnlockMutex(VdCtx->Signal_VideoReady);
     return;
 }
 
 void VideoDrawFill(WORD16 x, WORD16 y, WORD16 w, WORD16 h, WORD32 color) {
+    SDL_LockMutex(VdCtx->Signal_VideoReady);
+    
+    if (VdCtx->CommandCount >= VdCtx->CommandsMax) {
+        VdCtx->CommandsMax += 100;
+        VdCtx->Commands = realloc(VdCtx->Commands,
+            sizeof(VIDEO_CTX_COMMAND) * VdCtx->CommandsMax);
+    }
+    
+    PVIDEO_CTX_COMMAND ThisCmd = &VdCtx->Commands[VdCtx->CommandCount++];
+    ThisCmd->x = x;
+    ThisCmd->y = y;
+    ThisCmd->w = w;
+    ThisCmd->h = h;
+    ThisCmd->XArgs.Color = color;
+    ThisCmd->VcType = VCTYPE_RECT;
+    
+    SDL_UnlockMutex(VdCtx->Signal_VideoReady);
     return;
 }
 
 void VideoCopyRect(WORD16 x, WORD16 y, WORD16 w, WORD16 h, WORD64 ptr) {
+    SDL_LockMutex(VdCtx->Signal_VideoReady);
+    
+    if (VdCtx->CommandCount >= VdCtx->CommandsMax) {
+        VdCtx->CommandsMax += 100;
+        VdCtx->Commands = realloc(VdCtx->Commands,
+            sizeof(VIDEO_CTX_COMMAND) * VdCtx->CommandsMax);
+    }
+    
+    PVIDEO_CTX_COMMAND ThisCmd = &VdCtx->Commands[VdCtx->CommandCount++];
+    ThisCmd->x = x;
+    ThisCmd->y = y;
+    ThisCmd->w = w;
+    ThisCmd->h = h;
+    ThisCmd->XArgs.Buffer = (void*)ptr;
+    ThisCmd->VcType = VCTYPE_COPY;
+    
+    SDL_UnlockMutex(VdCtx->Signal_VideoReady);
     return;
 }
 
 WORD64 VideoGetWidthHeight(void) {
-    return 0x00;
+    return HILOW64(VdCtx->w, VdCtx->h);
 }
 
 void VideoSuggestSize(WORD16 w, WORD16 h) {
+    VdCtx->w = w;
+    VdCtx->h = h;
+    SDL_SetWindowSize(VdCtx->Window, w, h);
     return;
 }

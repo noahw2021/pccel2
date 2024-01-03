@@ -35,6 +35,7 @@ typedef struct _VIDEO_CTX {
     PVIDEO_CTX_COMMAND Commands;
     WORD32 CommandCount, CommandsMax;
     
+    WORD32 w, h;
     SDL_Window* Window;
     SDL_Renderer* Renderer;
     SDL_Mutex* VcMutex;
