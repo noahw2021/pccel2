@@ -30,6 +30,8 @@ void KeyboardShutdown(void);
 void KeyboardSetKeyDownInterrupt(WORD64 Interrupt);
 void KeyboardSetKeyUpInterrupt(WORD64 Interrupt);
 WORD64 KeyboardGetKeyMapPointer(void);
+void KeyboardHandleKeyUp(BYTE ScanCode);
+void KeyboardHandleKeyDown(BYTE ScanCode);
 
 
 // Fdisk functions

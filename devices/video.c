@@ -49,6 +49,7 @@ typedef struct _VIDEO_CTX {
     SDL_Mutex* VcMutex;
     SDL_Mutex* Signal_Shutdown;
     SDL_Mutex* Signal_VideoReady;
+    SDL_Mutex* Signal_KeyModify;
 }VIDEO_CTX, *PVIDEO_CTX;
 
 PVIDEO_CTX VdCtx;
@@ -77,8 +78,26 @@ void VideoInit(void) {
                 SDL_UnlockMutex(VdCtx->Signal_Shutdown);
                 break;
             }
+            
+            if (Event.type == SDL_KEYUP) {
+                SDL_LockMutex(VdCtx->Signal_KeyModify);
+                
+                KeyboardHandleKeyUp(Event.key.keysym.scancode);
+                
+                SDL_UnlockMutex(VdCtx->Signal_KeyModify);
+            }
+            
+            if (Event.type == SDL_KEYDOWN) {
+                SDL_LockMutex(VdCtx->Signal_KeyModify);
+                
+                KeyboardHandleKeyDown(Event.key.keysym.scancode);
+                
+                SDL_UnlockMutex(VdCtx->Signal_KeyModify);
+            }
         }
         
+        if (!SDL_TryLockMutex(VdCtx->Signal_Shutdown))
+            break;
         
         SDL_LockMutex(VdCtx->Signal_VideoReady);
         for (int i = 0; i < VdCtx->CommandCount; i++) {
