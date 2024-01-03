@@ -9,6 +9,40 @@
 #define devices_h
 
 #include "../types.h"
+#include "SDL.h"
+
+#define SDL_Mutex SDL_mutex
+#define SDL_Semaphore SDL_sem
+
+typedef union _VIDEO_CTX_XARGS {
+    void* Buffer;
+    char* Text;
+    WORD32 Color;
+}VIDEO_CTX_XARGS, *PVIDEO_CTX_XARGS;
+
+#define VCTYPE_RECT 0x00
+#define VCTYPE_OUTL 0x01
+#define VCTYPE_COPY 0x02
+#define VCTYPE_LINE 0x03
+
+typedef struct _VIDEO_CTX_COMMAND {
+    WORD32 VcType;
+    int x, y, w, h;
+    VIDEO_CTX_XARGS XArgs;
+}VIDEO_CTX_COMMAND, *PVIDEO_CTX_COMMAND;
+
+typedef struct _VIDEO_CTX {
+    PVIDEO_CTX_COMMAND Commands;
+    WORD32 CommandCount, CommandsMax;
+    
+    SDL_Window* Window;
+    SDL_Renderer* Renderer;
+    SDL_Mutex* VcMutex;
+    SDL_Mutex* Signal_Shutdown;
+    SDL_Mutex* Signal_VideoReady;
+    SDL_Mutex* Signal_KeyModify;
+}VIDEO_CTX, *PVIDEO_CTX;
+extern PVIDEO_CTX VdCtx;
 
 // Video functions
 void VideoInit(void);
