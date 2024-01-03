@@ -26,7 +26,12 @@ void VideoInit(void) {
     VdCtx = malloc(sizeof(VIDEO_CTX));
     memset(VdCtx, 0, sizeof(VIDEO_CTX));
     
-    VdCtx->Window = SDL_CreateWindow("PCCEL2/PLASM2 Layer", 
+    VdCtx->Signal_Shutdown = SDL_CreateMutex();
+    VdCtx->Signal_KeyModify = SDL_CreateMutex();
+    VdCtx->Signal_VideoReady = SDL_CreateMutex();
+    VdCtx->VcMutex = SDL_CreateMutex();
+    
+    VdCtx->Window = SDL_CreateWindow("PCCEL2/PLASM2 Layer",
         SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, 0);
     VdCtx->Renderer = SDL_CreateRenderer(VdCtx->Window, -1,
         SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
@@ -115,6 +120,21 @@ void VideoInit(void) {
 }
 
 void VideoShutdown(void) {
+    if (!VdCtx)
+        return;
+    
+    SDL_DestroyRenderer(VdCtx->Renderer);
+    SDL_DestroyWindow(VdCtx->Window);
+    
+    if (VdCtx->Commands)
+        free(VdCtx->Commands);
+    
+    SDL_DestroyMutex(VdCtx->Signal_Shutdown);
+    SDL_DestroyMutex(VdCtx->Signal_KeyModify);
+    SDL_DestroyMutex(VdCtx->Signal_VideoReady);
+    SDL_DestroyMutex(VdCtx->VcMutex);
+    
+    free(VdCtx);
     return;
 }
 
