@@ -72,11 +72,13 @@ void VideoInit(void) {
     
     SDL_Event Event;
     while (1) {
-        SDL_PollEvent(&Event);
-        if (Event.type == SDL_QUIT) {
-            SDL_UnlockMutex(VdCtx->Signal_Shutdown);
-            break;
+        while (SDL_PollEvent(&Event)) {
+            if (Event.type == SDL_QUIT) {
+                SDL_UnlockMutex(VdCtx->Signal_Shutdown);
+                break;
+            }
         }
+        
         
         SDL_LockMutex(VdCtx->Signal_VideoReady);
         for (int i = 0; i < VdCtx->CommandCount; i++) {
