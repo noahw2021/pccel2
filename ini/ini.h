@@ -30,7 +30,8 @@ PINI_FILE IniCreateFile(const char* Name);
 void IniCloseFile(PINI_FILE File);
 
 BYTE IniDoesFieldExist(PINI_FILE File, const char* FieldName);
-void IniCreateField(PINI_FILE File, const char* FieldName, const char* Default);
+void IniCreateField(PINI_FILE File, const char* FieldName, 
+    const char* Default);
 PINI_ENTRY IniReadField(PINI_FILE File, const char* FieldName);
 void IniWriteField(PINI_FILE File, PINI_ENTRY Entry);
 void IniDeleteField(PINI_FILE File, const char* FieldName);
