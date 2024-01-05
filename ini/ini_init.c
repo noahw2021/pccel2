@@ -27,7 +27,6 @@ PINI_FILE IniOpenFile(const char* Name) {
         
         if (!File->Entries) {
             File->Entries = malloc(sizeof(INI_ENTRY));
-            File->EntryCount = 1;
         } else {
             File->Entries = realloc(File->Entries,
                 sizeof(INI_ENTRY) * (File->EntryCount + 1));
