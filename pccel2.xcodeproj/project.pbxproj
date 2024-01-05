@@ -17,6 +17,9 @@
 
 /* Begin PBXFileReference section */
 		8C15BC522B45FBAA007D5FE3 /* emu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = emu.h; sourceTree = "<group>"; };
+		8C15BC542B489014007D5FE3 /* ini.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ini.h; sourceTree = "<group>"; };
+		8C15BC552B4890EC007D5FE3 /* ini_init.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ini_init.c; sourceTree = "<group>"; };
+		8C15BC562B4890F4007D5FE3 /* ini_io.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ini_io.c; sourceTree = "<group>"; };
 		8C5302B12B38CF15001B7802 /* libpccel2.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libpccel2.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C5302B82B38CF1F001B7802 /* pccel2_exports.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pccel2_exports.h; sourceTree = "<group>"; };
 		8C5302B92B38CFC3001B7802 /* types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
@@ -42,9 +45,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C15BC532B48900B007D5FE3 /* ini */ = {
+			isa = PBXGroup;
+			children = (
+				8C15BC542B489014007D5FE3 /* ini.h */,
+				8C15BC552B4890EC007D5FE3 /* ini_init.c */,
+				8C15BC562B4890F4007D5FE3 /* ini_io.c */,
+			);
+			path = ini;
+			sourceTree = "<group>";
+		};
 		8C5302A82B38CF15001B7802 = {
 			isa = PBXGroup;
 			children = (
+				8C15BC532B48900B007D5FE3 /* ini */,
 				8C7D2D1D2B40B7AF00C12DD0 /* devices */,
 				8C5302BD2B3B45F5001B7802 /* pccel2 */,
 				8C5302B92B38CFC3001B7802 /* types.h */,

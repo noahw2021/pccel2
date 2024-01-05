@@ -6,6 +6,13 @@
 //
 
 #include "devices.h"
+#include <stdio.h>
+
+typedef struct _FDISK_CTX {
+    FILE* PhysicalDrive;
+    
+}FDISK_CTX, *PFDISK_CTX;
+PFDISK_CTX FdCtx;
 
 void FdiskInit(void) {
     return;
