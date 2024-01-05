@@ -10,7 +10,7 @@
 #include <string.h>
 
 PINI_FILE IniOpenFile(const char* Name) {
-    FILE* _File = fopen(Name, "r");
+    FILE* _File = fopen(Name, "r+");
     if (!_File)
         return NULL;
     
@@ -61,9 +61,27 @@ PINI_FILE IniOpenFile(const char* Name) {
 }
 
 PINI_FILE IniCreateFile(const char* Name) {
+    FILE* _File = fopen(Name, "w+");
+    if (!_File)
+        return NULL;
     
+    PINI_FILE File = malloc(sizeof(INI_FILE));
+    memset(File, 0, sizeof(INI_FILE));
+    
+    File->VFile = _File;
+    return File;
 }
 
 void IniCloseFile(PINI_FILE File) {
+    if (!File)
+        return;
     
+    if (File->VFile)
+        fclose(File->VFile);
+
+    if (File->Entries)
+        free(File->Entries);
+    
+    free(File);
+    return;
 }
