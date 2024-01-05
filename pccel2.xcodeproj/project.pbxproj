@@ -12,6 +12,7 @@
 		8C15BBF12B426FCC007D5FE3 /* fdisk.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C7D2D212B40B7DA00C12DD0 /* fdisk.c */; };
 		8C15BC572B489133007D5FE3 /* ini_init.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C15BC552B4890EC007D5FE3 /* ini_init.c */; };
 		8C15BC582B489134007D5FE3 /* ini_io.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C15BC562B4890F4007D5FE3 /* ini_io.c */; };
+		8C477D502B48A3D600CEEEFB /* ini_close.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C477D4F2B48A3D600CEEEFB /* ini_close.c */; };
 		8C5302BF2B3B4607001B7802 /* emu_main.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C5302BE2B3B4607001B7802 /* emu_main.c */; };
 		8C5302C12B3B4637001B7802 /* emu_instrinsics.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C5302C02B3B4637001B7802 /* emu_instrinsics.c */; };
 		8C7C33A92B42696F009EEB9F /* libSDL2-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CAE87F32B40BA2000A2E6C9 /* libSDL2-2.0.0.dylib */; };
@@ -22,6 +23,7 @@
 		8C15BC542B489014007D5FE3 /* ini.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ini.h; sourceTree = "<group>"; };
 		8C15BC552B4890EC007D5FE3 /* ini_init.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ini_init.c; sourceTree = "<group>"; };
 		8C15BC562B4890F4007D5FE3 /* ini_io.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ini_io.c; sourceTree = "<group>"; };
+		8C477D4F2B48A3D600CEEEFB /* ini_close.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ini_close.c; sourceTree = "<group>"; };
 		8C5302B12B38CF15001B7802 /* libpccel2.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libpccel2.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C5302B82B38CF1F001B7802 /* pccel2_exports.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pccel2_exports.h; sourceTree = "<group>"; };
 		8C5302B92B38CFC3001B7802 /* types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
@@ -53,6 +55,7 @@
 				8C15BC542B489014007D5FE3 /* ini.h */,
 				8C15BC552B4890EC007D5FE3 /* ini_init.c */,
 				8C15BC562B4890F4007D5FE3 /* ini_io.c */,
+				8C477D4F2B48A3D600CEEEFB /* ini_close.c */,
 			);
 			path = ini;
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C15BBEF2B426FCC007D5FE3 /* video.c in Sources */,
+				8C477D502B48A3D600CEEEFB /* ini_close.c in Sources */,
 				8C15BC582B489134007D5FE3 /* ini_io.c in Sources */,
 				8C15BC572B489133007D5FE3 /* ini_init.c in Sources */,
 				8C15BBF02B426FCC007D5FE3 /* keyboard.c in Sources */,

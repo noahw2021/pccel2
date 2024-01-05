@@ -70,17 +70,3 @@ PINI_FILE IniCreateFile(const char* Name) {
     File->VFile = _File;
     return File;
 }
-
-void IniCloseFile(PINI_FILE File) {
-    if (!File)
-        return;
-    
-    if (File->VFile)
-        fclose(File->VFile);
-
-    if (File->Entries)
-        free(File->Entries);
-    
-    free(File);
-    return;
-}
