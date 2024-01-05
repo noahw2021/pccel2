@@ -10,9 +10,6 @@
 
 #include <stdio.h>
 
-void IniInit(void);
-void IniShutdown(void);
-
 typedef struct _INI_ENTRY {
     char Name[32];
     WORD32 Hash;
