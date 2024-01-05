@@ -10,6 +10,8 @@
 		8C15BBEF2B426FCC007D5FE3 /* video.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C7D2D1F2B40B7C600C12DD0 /* video.c */; };
 		8C15BBF02B426FCC007D5FE3 /* keyboard.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C7D2D202B40B7CD00C12DD0 /* keyboard.c */; };
 		8C15BBF12B426FCC007D5FE3 /* fdisk.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C7D2D212B40B7DA00C12DD0 /* fdisk.c */; };
+		8C15BC572B489133007D5FE3 /* ini_init.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C15BC552B4890EC007D5FE3 /* ini_init.c */; };
+		8C15BC582B489134007D5FE3 /* ini_io.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C15BC562B4890F4007D5FE3 /* ini_io.c */; };
 		8C5302BF2B3B4607001B7802 /* emu_main.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C5302BE2B3B4607001B7802 /* emu_main.c */; };
 		8C5302C12B3B4637001B7802 /* emu_instrinsics.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C5302C02B3B4637001B7802 /* emu_instrinsics.c */; };
 		8C7C33A92B42696F009EEB9F /* libSDL2-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CAE87F32B40BA2000A2E6C9 /* libSDL2-2.0.0.dylib */; };
@@ -174,6 +176,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C15BBEF2B426FCC007D5FE3 /* video.c in Sources */,
+				8C15BC582B489134007D5FE3 /* ini_io.c in Sources */,
+				8C15BC572B489133007D5FE3 /* ini_init.c in Sources */,
 				8C15BBF02B426FCC007D5FE3 /* keyboard.c in Sources */,
 				8C15BBF12B426FCC007D5FE3 /* fdisk.c in Sources */,
 				8C5302BF2B3B4607001B7802 /* emu_main.c in Sources */,

@@ -8,13 +8,13 @@
 #ifndef ini_h
 #define ini_h
 
+#include "../types.h"
 #include <stdio.h>
 
 typedef struct _INI_ENTRY {
-    char Name[32];
-    WORD32 Hash;
+    char Name[64];
     
-    char Value[64];
+    char Value[256];
     WORD64 Numerical;
 }INI_ENTRY, *PINI_ENTRY;
 
@@ -30,8 +30,9 @@ PINI_FILE IniCreateFile(const char* Name);
 void IniCloseFile(PINI_FILE File);
 
 BYTE IniDoesFieldExist(PINI_FILE File, const char* FieldName);
-void IniCreateField(PINI_FILE File, const char* FieldName);
+void IniCreateField(PINI_FILE File, const char* FieldName, const char* Default);
 PINI_ENTRY IniReadField(PINI_FILE File, const char* FieldName);
+void IniWriteField(PINI_FILE File, PINI_ENTRY Entry);
 void IniDeleteField(PINI_FILE File, const char* FieldName);
 
 #endif /* ini_h */
