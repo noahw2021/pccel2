@@ -10,6 +10,16 @@
 
 #include "types.h"
 
+typedef struct _EMU_SETTINGS {
+    char DiskRaw[64];
+    WORD32 DriveMaxSpace;
+    WORD32 MemoryToAllocate;
+}EMU_SETTINGS, *PEMU_SETTINGS;
+extern PEMU_SETTINGS EmuSettings;
+
+void EmuInit(void);
+void EmuShutdown(void);
+
 void EmuInterrupt(BYTE Interrupt, WORD64 Argument);
 
 #endif /* emu_h */

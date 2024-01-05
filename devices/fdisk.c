@@ -10,7 +10,7 @@
 
 typedef struct _FDISK_CTX {
     FILE* PhysicalDrive;
-    
+    WORD32 DriveMaxSize;
 }FDISK_CTX, *PFDISK_CTX;
 PFDISK_CTX FdCtx;
 
