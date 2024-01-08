@@ -9,10 +9,11 @@
 #define pccel2_exports_h
 
 #include "types.h"
+#include <stdio.h>
 
 #define CCEL2_API
 
-CCEL2_API void Pccel2Init(void);
+CCEL2_API void Pccel2Init(FILE* ErrorStream);
 CCEL2_API void Pccel2Shutdown(void);
 
 typedef struct _CPU_CTX *PCPU_CTX;

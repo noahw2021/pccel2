@@ -16,6 +16,7 @@
 		8C477D522B48A4CF00CEEEFB /* emu.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C477D512B48A4CF00CEEEFB /* emu.c */; };
 		8C5302BF2B3B4607001B7802 /* emu_main.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C5302BE2B3B4607001B7802 /* emu_main.c */; };
 		8C5302C12B3B4637001B7802 /* emu_instrinsics.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C5302C02B3B4637001B7802 /* emu_instrinsics.c */; };
+		8C6A402D2B4C3A0800BABD9C /* pccel2.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C6A402C2B4C3A0800BABD9C /* pccel2.c */; };
 		8C7C33A92B42696F009EEB9F /* libSDL2-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CAE87F32B40BA2000A2E6C9 /* libSDL2-2.0.0.dylib */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		8C5302B92B38CFC3001B7802 /* types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
 		8C5302BE2B3B4607001B7802 /* emu_main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = emu_main.c; sourceTree = "<group>"; };
 		8C5302C02B3B4637001B7802 /* emu_instrinsics.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = emu_instrinsics.c; sourceTree = "<group>"; };
+		8C6A402C2B4C3A0800BABD9C /* pccel2.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = pccel2.c; sourceTree = "<group>"; };
 		8C7C33A72B426956009EEB9F /* libSDL2_ttf-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2_ttf-2.0.0.dylib"; path = "../../../../../opt/homebrew/Cellar/sdl2_ttf/2.20.2/lib/libSDL2_ttf-2.0.0.dylib"; sourceTree = "<group>"; };
 		8C7D2D1E2B40B7BE00C12DD0 /* devices.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = devices.h; sourceTree = "<group>"; };
 		8C7D2D1F2B40B7C600C12DD0 /* video.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = video.c; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				8C5302B82B38CF1F001B7802 /* pccel2_exports.h */,
 				8C15BC522B45FBAA007D5FE3 /* emu.h */,
 				8C477D512B48A4CF00CEEEFB /* emu.c */,
+				8C6A402C2B4C3A0800BABD9C /* pccel2.c */,
 				8C5302B22B38CF15001B7802 /* Products */,
 				8CAE87F22B40BA1F00A2E6C9 /* Frameworks */,
 			);
@@ -189,6 +192,7 @@
 				8C15BBF02B426FCC007D5FE3 /* keyboard.c in Sources */,
 				8C15BBF12B426FCC007D5FE3 /* fdisk.c in Sources */,
 				8C5302BF2B3B4607001B7802 /* emu_main.c in Sources */,
+				8C6A402D2B4C3A0800BABD9C /* pccel2.c in Sources */,
 				8C5302C12B3B4637001B7802 /* emu_instrinsics.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

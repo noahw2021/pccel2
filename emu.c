@@ -12,10 +12,11 @@
 
 PEMU_SETTINGS EmuSettings;
 
-void EmuInit(void) {
+void EmuInit(FILE* Es) {
     EmuSettings = malloc(sizeof(EMU_SETTINGS));
     memset(EmuSettings, 0, sizeof(EMU_SETTINGS));
     
+    EmuSettings->ErrorStream = Es;
     PINI_FILE IniFile = IniOpenFile("emu.ini");
    
     if (!IniFile) {

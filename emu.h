@@ -14,10 +14,12 @@ typedef struct _EMU_SETTINGS {
     char DiskRaw[64];
     WORD32 DriveMaxSpace;
     WORD32 MemoryToAllocate;
+    
+    FILE* ErrorStream;
 }EMU_SETTINGS, *PEMU_SETTINGS;
 extern PEMU_SETTINGS EmuSettings;
 
-void EmuInit(void);
+void EmuInit(FILE* Es);
 void EmuShutdown(void);
 
 void EmuInterrupt(BYTE Interrupt, WORD64 Argument);
