@@ -7,6 +7,7 @@
 
 #include "emu.h"
 #include "ini/ini.h"
+#include "devices/devices.h"
 #include <stdlib.h>
 #include <string.h>
 
@@ -44,6 +45,10 @@ void EmuInit(FILE* Es) {
         IniCloseFile(IniFile);
     }
     
+    VideoInit();
+    KeyboardInit();
+    FdiskInit();
+    
     return;
 }
 
@@ -51,5 +56,10 @@ void EmuShutdown(void) {
     if (EmuSettings)
         free(EmuSettings);
     
+    VideoShutdown();
+    KeyboardShutdown();
+    FdiskShutdown();
+    
+    // the ccel2 user owns the error stream!
     return;
 }
