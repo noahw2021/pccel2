@@ -13,6 +13,6 @@ typedef unsigned long WORD32;
 typedef unsigned short WORD16;
 typedef unsigned char BYTE;
 
-#define InRange(x, min, max) (x > min && x < max)
+#define InRange(x, min, max) (x >= min && x <= max)
 
 #endif /* types_h */
