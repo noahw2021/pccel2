@@ -17,6 +17,8 @@
 		8C5302BF2B3B4607001B7802 /* emu_main.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C5302BE2B3B4607001B7802 /* emu_main.c */; };
 		8C5302C12B3B4637001B7802 /* emu_instrinsics.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C5302C02B3B4637001B7802 /* emu_instrinsics.c */; };
 		8C6A402D2B4C3A0800BABD9C /* pccel2.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C6A402C2B4C3A0800BABD9C /* pccel2.c */; };
+		8C6A40322B4C3DB700BABD9C /* posx_memory.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C6A40312B4C3DB700BABD9C /* posx_memory.c */; };
+		8C6A40342B4C3E4C00BABD9C /* platforms.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C6A40332B4C3E4C00BABD9C /* platforms.c */; };
 		8C7C33A92B42696F009EEB9F /* libSDL2-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CAE87F32B40BA2000A2E6C9 /* libSDL2-2.0.0.dylib */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +35,10 @@
 		8C5302BE2B3B4607001B7802 /* emu_main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = emu_main.c; sourceTree = "<group>"; };
 		8C5302C02B3B4637001B7802 /* emu_instrinsics.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = emu_instrinsics.c; sourceTree = "<group>"; };
 		8C6A402C2B4C3A0800BABD9C /* pccel2.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = pccel2.c; sourceTree = "<group>"; };
+		8C6A402F2B4C3D9700BABD9C /* platforms.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = platforms.h; sourceTree = "<group>"; };
+		8C6A40302B4C3DA800BABD9C /* posx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = posx.h; sourceTree = "<group>"; };
+		8C6A40312B4C3DB700BABD9C /* posx_memory.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = posx_memory.c; sourceTree = "<group>"; };
+		8C6A40332B4C3E4C00BABD9C /* platforms.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = platforms.c; sourceTree = "<group>"; };
 		8C7C33A72B426956009EEB9F /* libSDL2_ttf-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2_ttf-2.0.0.dylib"; path = "../../../../../opt/homebrew/Cellar/sdl2_ttf/2.20.2/lib/libSDL2_ttf-2.0.0.dylib"; sourceTree = "<group>"; };
 		8C7D2D1E2B40B7BE00C12DD0 /* devices.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = devices.h; sourceTree = "<group>"; };
 		8C7D2D1F2B40B7C600C12DD0 /* video.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = video.c; sourceTree = "<group>"; };
@@ -67,14 +73,17 @@
 		8C5302A82B38CF15001B7802 = {
 			isa = PBXGroup;
 			children = (
+				8C6A402E2B4C3D8900BABD9C /* platform_osx */,
 				8C15BC532B48900B007D5FE3 /* ini */,
 				8C7D2D1D2B40B7AF00C12DD0 /* devices */,
 				8C5302BD2B3B45F5001B7802 /* pccel2 */,
 				8C5302B92B38CFC3001B7802 /* types.h */,
+				8C6A402F2B4C3D9700BABD9C /* platforms.h */,
 				8C5302B82B38CF1F001B7802 /* pccel2_exports.h */,
 				8C15BC522B45FBAA007D5FE3 /* emu.h */,
 				8C477D512B48A4CF00CEEEFB /* emu.c */,
 				8C6A402C2B4C3A0800BABD9C /* pccel2.c */,
+				8C6A40332B4C3E4C00BABD9C /* platforms.c */,
 				8C5302B22B38CF15001B7802 /* Products */,
 				8CAE87F22B40BA1F00A2E6C9 /* Frameworks */,
 			);
@@ -95,6 +104,15 @@
 				8C5302C02B3B4637001B7802 /* emu_instrinsics.c */,
 			);
 			path = pccel2;
+			sourceTree = "<group>";
+		};
+		8C6A402E2B4C3D8900BABD9C /* platform_osx */ = {
+			isa = PBXGroup;
+			children = (
+				8C6A40302B4C3DA800BABD9C /* posx.h */,
+				8C6A40312B4C3DB700BABD9C /* posx_memory.c */,
+			);
+			path = platform_osx;
 			sourceTree = "<group>";
 		};
 		8C7D2D1D2B40B7AF00C12DD0 /* devices */ = {
@@ -185,8 +203,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C477D522B48A4CF00CEEEFB /* emu.c in Sources */,
+				8C6A40322B4C3DB700BABD9C /* posx_memory.c in Sources */,
 				8C15BBEF2B426FCC007D5FE3 /* video.c in Sources */,
 				8C477D502B48A3D600CEEEFB /* ini_close.c in Sources */,
+				8C6A40342B4C3E4C00BABD9C /* platforms.c in Sources */,
 				8C15BC582B489134007D5FE3 /* ini_io.c in Sources */,
 				8C15BC572B489133007D5FE3 /* ini_init.c in Sources */,
 				8C15BBF02B426FCC007D5FE3 /* keyboard.c in Sources */,
